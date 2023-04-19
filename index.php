@@ -1,3 +1,10 @@
+
+<?php
+    session_start();
+    
+    $_SESSION['passwordRediretta'] = $compleatedPass;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +40,8 @@
                 
 
                         echo '<h3>la Password generata è: ' . $compleatedPass . '</h3>'; 
+                        header('Location: http://localhost/php-strong-password-generator/redirect.php');
+
                     }
                 ?>
             </div>
