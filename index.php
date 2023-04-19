@@ -12,7 +12,7 @@
     <main>
         <div class="container py-5">
             <div class="row">
-                <form>
+                <form class="py-5" method="GET" action="index.php">
                     <div class="mb-3">
                         <label for="passLength" class="form-label">Inserire lunghezza password:</label>
                         <input type="number" name="passLength" class="form-control" id="passLength" aria-describedby="passLength">
@@ -20,8 +20,36 @@
         
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+
+                <?php 
+                    
+                    if (isset($_GET["passLength"])) {
+                        
+                        $newPassw = passwGenerator($_GET["passLength"]);
+                        
+                        $compleatedPass = implode("", $newPassw);
+                
+
+                        echo '<h3>la Password generata è: ' . $compleatedPass . '</h3>'; 
+                    }
+                ?>
             </div>
         </div>
     </main>
 </body>
 </html>
+
+<?php
+    function passwGenerator($passLength) {
+        $possibleComp = ["A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G", "g", "H", "h", "I", "i", "J", "j", "K", "k", "L", "l", "M", "m", "N", "n", "O", "o", "P", "p", "Q", "q", "R", "r", "S", "s", "T", "t", "U", "u", "V", "v", "W", "w", "X", "x", "Y", "y", "Z", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "£", "/", "é", "ò", "ç", "@", "ù", "§"];
+
+        for($i = 0; $i < $passLength; $i++) {
+            
+            $generatedPassw = array_rand($possibleComp, 1);
+            $randomComp[] = $possibleComp[$generatedPassw];
+        }
+        return $randomComp;
+    }
+
+    
+?>
