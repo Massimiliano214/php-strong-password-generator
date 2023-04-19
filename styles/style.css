@@ -12,3 +12,12 @@ body {
     background-color: darkgoldenrod;
     margin-top: 50px;
 }
+
+.bottone {
+    text-decoration: none;
+    background-color: lightcoral;
+    color: black;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 10px;
+}
